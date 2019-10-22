@@ -97,8 +97,6 @@ public class Avoid extends Game {
 	
 	
 	
-	
-	
 	private void endgame() {
 		GAME_RUNNING = false;
 		MOVING_TO = '0';

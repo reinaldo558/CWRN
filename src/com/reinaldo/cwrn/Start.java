@@ -9,6 +9,7 @@ import com.reinaldo.cwrn.games.Game;
 import com.reinaldo.cwrn.games.arrow.Arrow;
 import com.reinaldo.cwrn.games.avoid.Avoid;
 import com.reinaldo.cwrn.games.flappy.Flappy;
+import com.reinaldo.cwrn.games.spaceinvaders.Space;
 import com.reinaldo.cwrn.games.survive.Survive;
 
 /** Can't work right now*/
@@ -48,6 +49,7 @@ public class Start {
 		map.put(2, new Survive());
 		map.put(3, new Flappy());
 		map.put(4, new Arrow());
+		map.put(5, new Space());
 		
 		return map;
 	}

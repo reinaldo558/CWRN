@@ -10,6 +10,7 @@ import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import com.reinaldo.cwrn.games.Game;
 
@@ -54,6 +55,27 @@ public class Flappy extends Game {
 		playerControl();
 	}
 	
+	private void replay() {
+		if (JOptionPane.showConfirmDialog(getContentPane(), "Play again?") == JOptionPane.OK_OPTION) {
+			points = 0;
+			lblPoints.setText("0");
+			division_x = 100;
+			division_y = 150;
+			creationTime = 10;
+			last_x = getWidth();
+			try {
+				btns.forEach(x -> remove(x));
+			} catch (Exception ex) {}
+			btns.clear();
+			jump = false;
+			player.setBounds(20, 50, 20, 20);
+			try {
+				repaint();
+			} catch (Exception ex) {}
+			letsBegin();
+		}
+	}
+	
 	private void letsBegin() {
 		// TICK control, all game rules are here
 		new Thread(new Runnable() {
@@ -66,6 +88,7 @@ public class Flappy extends Game {
 						// Check if player left the screen, up or down
 						if ((player.getY() > (getHeight() - 50)) || (player.getY() < -5)) {
 							msg("You lost, don't leave the screen");
+							replay();
 							break;
 						}
 						
@@ -77,6 +100,7 @@ public class Flappy extends Game {
 						
 						if (!moveObstacles()) {
 							msg("You lost!");
+							replay();
 							break;
 						}
 						
@@ -107,6 +131,7 @@ public class Flappy extends Game {
 			}
 		}).start();
 	}
+	
 	
 	
 	
